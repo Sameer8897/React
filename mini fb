@@ -1,0 +1,41 @@
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+
+//import img from "./react.png";
+
+function App() {
+  
+  let [list,setList]=useState([]);
+  let [post,setPost]=useState(""); //1
+  
+
+  const PostHere=()=>{
+    const newList=[post,...list];
+    setList(newList);
+    setPost=("");
+  };
+  
+  const handleChange=(e)=>{            //4
+    console.log(e.target.value);
+    const newPost=e.target.value;
+    setPost(newPost);
+  };
+
+
+  return (
+
+   <div >
+     <h1> </h1>
+     <input type="text" placeholder="Enter your post"  value={post} onChange={handleChange}/> 
+
+   <input type="button" value="post" onClick={PostHere} />
+
+  {list.map((item)=>{
+  return <h1>{item}</h1>;
+  })} 
+ </div>
+
+  );
+}
+export default App;
