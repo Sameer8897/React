@@ -1,0 +1,44 @@
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+//import bootstrap from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+//import img from "./react.png";
+
+function App() {
+  let title="Event demo";
+  let [counter,setCounter]=useState(0);
+  let[list,setList]=useState(["Mumbai"]);
+
+  let updateCounter=()=>{
+    const newcounter=counter+1;
+    setCounter(newcounter);
+  }
+
+  let updateCounter1=()=>{
+    const newcounter=counter-1;
+    setCounter(newcounter);
+  }
+
+  let mycity=()=>{
+    const city=[...list,"Pune"];
+    setList(city);
+  }
+
+  return (
+   <div class="bg-success">
+     <h1 class="bg-primary p-3">{title}</h1>
+     <h3 class="p-3">Likes::{counter}</h3>
+     <input type="button" value="Like" onClick={updateCounter}  />
+     <input type="button" value="UnLike" onClick={updateCounter1}  />
+     <input type="button" value="Add City" onClick={mycity}  />
+
+     {list.map((item)=>{
+      return<div className="alert alert success"><h1>{item}</h1></div>;
+    })} 
+     
+   </div>
+   
+  );
+}
+
+export default App;
